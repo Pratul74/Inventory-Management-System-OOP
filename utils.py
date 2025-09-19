@@ -28,14 +28,17 @@ class Inventory:
             return True
         return False
     
-    def add_stock(self, product, new_quantity):
+    def update_stock(self, product, new_quantity):
         product.add_quantity(new_quantity)
     
-    def change_category(self, product, new_category):
-        product.update_category(new_category)
+    def update_category(self, product_name, new_category):
+        globals()[product_name].update_category(new_category)
 
     def delete_product(self, product):
         self.products.remove(product)
+
+    def update_price(self, product, newPrice):
+        product.price=newPrice
         
 
     def __str__(self):
@@ -52,24 +55,4 @@ class Inventory:
 
 
 
-    
-
-icecream=Product("Magnum Truffle Icecream", "Food", 80, 50)
-eggs=Product("Eggs","Food",196,10)
-condom=Product("Manforce Extra Dotted Condom","Bodycare",99,100)
-inventory=Inventory()
-inventory.add_product(icecream)
-inventory.add_product(eggs)
-inventory.add_product(condom)
-print(inventory)
-print("\n")
-inventory.add_stock(icecream,20)
-print(inventory)
-inventory.change_category(condom,"Medicine")
-print("\n")
-print(inventory)
-print(inventory.delete_product(condom))
-print("\n")
-print(inventory)
-print(inventory.delete_product(eggs))
     
