@@ -28,17 +28,30 @@ class Inventory:
             return True
         return False
     
-    def update_stock(self, product, new_quantity):
-        product.add_quantity(new_quantity)
+    def update_stock(self, product_name, new_quantity):
+        for product in self.products:
+            if product.name==product_name:
+                return True
+        return False
+    
     
     def update_category(self, product_name, new_category):
-        globals()[product_name].update_category(new_category)
+        for product in self.products:
+            if product.name==product_name:
+                product.category=new_category
+                return True
+        return False
 
     def delete_product(self, product):
         self.products.remove(product)
 
-    def update_price(self, product, newPrice):
-        product.price=newPrice
+    def update_price(self, product_name, newPrice):
+        for product in self.products:
+            if product.name==product_name:
+                product.price=newPrice
+                return True
+        return False
+        
         
 
     def __str__(self):
@@ -46,6 +59,9 @@ class Inventory:
         for product in self.products:
             product_list+=f"{product.name} | Category: {product.category} | Price: {product.price} | Quantity: {product.quantity}\n"
         return product_list
+
+
+
 
 
 

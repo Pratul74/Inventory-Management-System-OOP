@@ -33,7 +33,33 @@ if __name__=="__main__":
             user_answer=input("Select Option: ")
             if user_answer=="A":
                 product_name=input("Enter the product name you want to change the category: ")
-                newInventory.update_category()
+                new_category=input("Enter the new category: ")
+                success_cat_change=newInventory.update_category(product_name=product_name,new_category=new_category)
+                if success_cat_change:
+                    print(f"Category changed successfully")
+                else:
+                    print("Error!")
+            elif user_answer=="B":
+                product_name=input("Enter the product name you want to change the price: ")
+                new_price=input("Enter the new price: ")
+                price_change_success=newInventory.update_price(product_name=product_name,newPrice=new_price)
+                if price_change_success:
+                    print("Price Changed successfully :)")
+                else:
+                    print("Error!")
+            elif user_answer=="C":
+                product_name=input("Enter the product name you want to change the price: ")
+                additional_quantity=input("Enter new quantity you want to add in inventory: ")
+                quantity_change_success=newInventory.update_stock(product_name=product_name,new_quantity=additional_quantity)
+                if quantity_change_success:
+                    print("Quantity added successfully :)")
+                else:
+                    print("Error!")
+            else:
+                print("You entered wrong choice, Try again")
+                continue
+
+
 
 
 
