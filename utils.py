@@ -31,6 +31,7 @@ class Inventory:
     def update_stock(self, product_name, new_quantity):
         for product in self.products:
             if product.name==product_name:
+                product.quantity+=new_quantity
                 return True
         return False
     
@@ -42,8 +43,12 @@ class Inventory:
                 return True
         return False
 
-    def delete_product(self, product):
-        self.products.remove(product)
+    def delete_product(self, product_name):
+        for product in self.products:
+            if product.name==product_name:
+                self.products.remove(product)
+                return True
+        return False
 
     def update_price(self, product_name, newPrice):
         for product in self.products:
